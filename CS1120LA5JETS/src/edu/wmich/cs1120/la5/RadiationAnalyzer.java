@@ -3,35 +3,40 @@ package edu.wmich.cs1120.la5;
 import java.util.ArrayList;
 
 public class RadiationAnalyzer implements IRover {
-
+	private ArrayList<IArea> path;
+	private String analysis;
+	private double radiation;
 	@Override
 	public ArrayList<IArea> getPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return path;
 	}
 
 	@Override
 	public void setPath(ArrayList<IArea> area) {
-		// TODO Auto-generated method stub
-		
+		path = area;
 	}
 
 	@Override
 	public void analyzePath() {
-		// TODO Auto-generated method stub
+		for (int i =0;i<path.size();i++){
+			radiation = (radiation + path.get(i).getRadiation()) / path.size();
+		}
+		setAnalysis(toString());
 		
 	}
 
 	@Override
 	public String getAnalysis() {
-		// TODO Auto-generated method stub
-		return null;
+		return analysis;
 	}
 
 	@Override
 	public void setAnalysis(String analysis) {
-		// TODO Auto-generated method stub
+		this.analysis = analysis;
 		
+	}
+	public String toString(){
+		return "" + radiation;
 	}
 
 }
