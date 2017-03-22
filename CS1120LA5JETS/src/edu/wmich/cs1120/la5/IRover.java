@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public interface IRover {
 	ArrayList<IArea> getPath();
-	void setPath(ArrayList<IArea>);
+	void setPath(ArrayList<IArea> area);
 	void analyzePath();
 	String getAnalysis();
 	void setAnalysis(String analysis);
