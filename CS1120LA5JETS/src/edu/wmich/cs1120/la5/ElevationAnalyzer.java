@@ -4,34 +4,57 @@ import java.util.ArrayList;
 
 public class ElevationAnalyzer implements IRover {
 
-	@Override
+	ArrayList<IArea> path;
+	private int avgElevation;
+	String elevationAnalysis;
+	
+	/**
+	 * Retrieves address of ArrayList<IArea>
+	 * @return path Address of ArrayList<IArea>
+	 */
 	public ArrayList<IArea> getPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return path;
 	}
 
-	@Override
+	/**
+	 * Analyzes path for elevation
+	 * @param area Address of ArrayList<IArea>
+	 */
 	public void setPath(ArrayList<IArea> area) {
-		// TODO Auto-generated method stub
-		
+		path = area;
 	}
 
-	@Override
+	/**
+	 * Gets average elevation for path and sets it to elevationAnalysis attribute
+	 */
 	public void analyzePath() {
-		// TODO Auto-generated method stub
-		
+		int totalElevation = 0;
+		for (int currentIteration = 0; currentIteration < path.size(); currentIteration++)
+			{totalElevation += path.get(currentIteration).getElevation();}
+		avgElevation = totalElevation/path.size();
+		this.setAnalysis(toString());
 	}
 
-	@Override
+	/**
+	 * Gets analysis of average elevation
+	 */
 	public String getAnalysis() {
-		// TODO Auto-generated method stub
-		return null;
+		return elevationAnalysis;
 	}
 
-	@Override
+	/**
+	 * Sets analysis based on analyzePath() result
+	 */
 	public void setAnalysis(String analysis) {
-		// TODO Auto-generated method stub
+		elevationAnalysis = analysis;
 		
 	}
 
+	/**
+	 * Converts result of analyzePath() to a string
+	 */
+	public String toString() {
+		String returnString = "" + avgElevation;
+		return returnString;
+	}
 }
