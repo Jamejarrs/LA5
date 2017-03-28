@@ -3,35 +3,44 @@ package edu.wmich.cs1120.la5;
 import java.util.ArrayList;
 
 public class EnergyAnalyzer implements IRover {
-
+	private ArrayList<IArea> path;
+	private String analysis;
+	private double energy;
+	
 	@Override
 	public ArrayList<IArea> getPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return path;
 	}
 
 	@Override
 	public void setPath(ArrayList<IArea> area) {
-		// TODO Auto-generated method stub
+		path = area;
 		
 	}
 
 	@Override
 	public void analyzePath() {
-		// TODO Auto-generated method stub
+		energy = 0;
+		for (int index = 0;index<path.size();index++) {
+		energy = energy + path.get(index).calcConsumedEnergy();
+		}
+		setAnalysis(toString());
 		
 	}
 
 	@Override
 	public String getAnalysis() {
-		// TODO Auto-generated method stub
-		return null;
+		return analysis;
 	}
 
 	@Override
 	public void setAnalysis(String analysis) {
-		// TODO Auto-generated method stub
+		this.analysis = analysis;
 		
+	}
+	
+	public String toString(){
+		return "" + energy; 
 	}
 
 }

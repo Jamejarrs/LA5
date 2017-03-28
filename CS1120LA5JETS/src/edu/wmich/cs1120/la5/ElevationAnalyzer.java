@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ElevationAnalyzer implements IRover {
 
 	ArrayList<IArea> path;
-	private int avgElevation;
+	private double avgElevation;
 	String elevationAnalysis;
 	
 	/**
@@ -28,7 +28,7 @@ public class ElevationAnalyzer implements IRover {
 	 * Gets average elevation for path and sets it to elevationAnalysis attribute
 	 */
 	public void analyzePath() {
-		int totalElevation = 0;
+		double totalElevation = 0;
 		for (int currentIteration = 0; currentIteration < path.size(); currentIteration++)
 			{totalElevation += path.get(currentIteration).getElevation();}
 		avgElevation = totalElevation/path.size();
