@@ -6,6 +6,7 @@ public class EnergyAnalyzer implements IRover {
 	private ArrayList<IArea> path;
 	private String analysis;
 	private double energy;
+
 	@Override
 	public ArrayList<IArea> getPath() {
 		return path;
@@ -13,7 +14,9 @@ public class EnergyAnalyzer implements IRover {
 
 	@Override
 	public void setPath(ArrayList<IArea> area) {
+
 		path =area;
+
 		
 	}
 
@@ -24,6 +27,7 @@ public class EnergyAnalyzer implements IRover {
 		energy = energy + path.get(index).calcConsumedEnergy();
 		}
 		setAnalysis(toString());
+
 	}
 
 	@Override
@@ -34,10 +38,12 @@ public class EnergyAnalyzer implements IRover {
 	@Override
 	public void setAnalysis(String analysis) {
 		this.analysis = analysis;
+
 	}
 	
 	public String toString(){
 		return "" + energy;
+
 	}
 
 }
