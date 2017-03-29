@@ -1,11 +1,12 @@
 package edu.wmich.cs1120.la5;
 
-public class Subtraction implements IExpression {
+public class Subtraction implements IOperation {
 
 	@Override
-	public int getValue() {
-		// TODO Auto-generated method stub
-		return 0;
+	public Integer perform(IExpression left, IExpression right) {
+		return null;
 	}
+
+
 
 }

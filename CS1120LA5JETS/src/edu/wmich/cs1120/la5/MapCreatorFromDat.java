@@ -15,6 +15,9 @@ public class MapCreatorFromDat implements IMapCreator {
 		FileInputStream fStream = new FileInputStream(fileName);
 		DataInputStream input = new DataInputStream(fStream);
 		IArea[][] terrain = new IArea[10][10];
+		int val1;
+		int val2;
+		char op;
 		
 		for (int row = 0; row < 10; row++) {
 			for (int col = 0; col < 10; col++) {
@@ -22,6 +25,11 @@ public class MapCreatorFromDat implements IMapCreator {
 				currentBasicEnergy =input.readDouble(); 
 				currentElevation =input.readDouble(); 
 				currentRadiation =input.readDouble(); 
+				val1 = input.readInt();
+				op = input.readChar();
+				val2 = input.readInt();
+				Literal value1 = new Literal(val1);
+				Literal value2 = new Literal(val2);
 				
 				if (currentRadiation >= 0.5 || currentElevation > threshold * 0.5)
 					terrain[row][col] = new HighArea();

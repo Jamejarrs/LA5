@@ -1,11 +1,13 @@
 package edu.wmich.cs1120.la5;
 
-public class Addition implements IExpression {
+public class Addition implements IOperation {
 
 	@Override
-	public int getValue() {
+	public Integer perform(IExpression left, IExpression right) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
+
+
 
 }
