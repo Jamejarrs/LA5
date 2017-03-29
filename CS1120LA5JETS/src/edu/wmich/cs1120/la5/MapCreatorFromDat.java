@@ -12,7 +12,11 @@ public class MapCreatorFromDat implements IMapCreator {
 	double currentElevation;
 	double currentRadiation;
 	
-	@Override
+	/**
+	 * Scans terrain using input data from file to determine what terrain is impassable if its elevation is over the threshold
+	 * @param fileName Name of text file used to create map, holding double values for each area's elevation, radiation, and basic energy cost
+	 * @param threshold Number input in GUI, used to determine what terrain is impassable if the terrain is over the threshold
+	 */
 	public void scanTerrain(String fileName, int threshold) throws IOException {
 		RandomAccessFile randomFile = new RandomAccessFile(fileName, "r");
 		IArea[][] terrain = new IArea[10][10];
@@ -47,12 +51,18 @@ public class MapCreatorFromDat implements IMapCreator {
 		randomFile.close();
 	}
 
-	@Override
+	/**
+	 * Retrieves address for object of TerrainScanner class
+	 * @return terrainScan Returns the address for an object of the TerrainScanner class.
+	 */
 	public TerrainScanner getScanner() {
 		return scanner;
 	}
 
-	@Override
+	/**
+	 * Saves address for object of the TerrainScanner class to MapCreator class.
+	 * @param scanner Address for an object of the TerrainScanner class.
+	 */
 	public void setScanner(TerrainScanner scanner) {
 		this.scanner = scanner;
 		
