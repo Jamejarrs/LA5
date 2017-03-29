@@ -26,7 +26,7 @@ public class EnergyAnalyzer implements IRover {
 		for (int index = 0;index<path.size();index++) {
 		energy = energy + path.get(index).calcConsumedEnergy();
 		}
-		setAnalysis(toString());
+		this.setAnalysis(toString());
 
 	}
 
@@ -42,7 +42,10 @@ public class EnergyAnalyzer implements IRover {
 	}
 	
 	public String toString(){
-		return "" + energy;
+		if (energy == 0.0)
+			return "Energy Information:";
+		else
+			return "" + energy;
 
 	}
 

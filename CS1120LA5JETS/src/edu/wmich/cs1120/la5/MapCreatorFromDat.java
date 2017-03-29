@@ -2,6 +2,8 @@ package edu.wmich.cs1120.la5;
 
 import java.io.*;
 
+import edu.wmich.cs1120.la5.TerrainScanner;
+
 public class MapCreatorFromDat implements IMapCreator {
 
 	TerrainScanner scanner = new TerrainScanner();
@@ -12,27 +14,23 @@ public class MapCreatorFromDat implements IMapCreator {
 	
 	@Override
 	public void scanTerrain(String fileName, int threshold) throws IOException {
-		FileInputStream fStream = new FileInputStream(fileName);
-		DataInputStream input = new DataInputStream(fStream);
+		RandomAccessFile randomFile = new RandomAccessFile(fileName, "r");
 		IArea[][] terrain = new IArea[10][10];
 		int val1;
 		int val2;
 		char op;
-		
-		for (int row = 0; row < 10; row++) {
+		int startingByte = 0;
+		int totalBytes = (Integer.BYTES * 2) + (Double.BYTES * 3) + 2;
+		for (int row = 0; row < 10; row ++) {
 			for (int col = 0; col < 10; col++) {
-				
-				currentBasicEnergy =input.readDouble(); 
-				currentElevation =input.readDouble(); 
-				currentRadiation =input.readDouble(); 
-				val1 = input.readInt();
-				op = input.readChar();
-				val2 = input.readInt();
-				Literal value1 = new Literal(val1);
-				Literal value2 = new Literal(val2);
-				
-				BinaryExpression exp = new BinaryExpression(value1, value2, );
-				
+				randomFile.seek(startingByte);
+				currentBasicEnergy =randomFile.readDouble(); 
+				currentElevation =randomFile.readDouble(); 
+				currentRadiation =randomFile.readDouble(); 
+				op = randomFile.readChar();
+				val1 = randomFile.readInt();
+				val2 = randomFile.readInt();
+			
 				if (currentRadiation >= 0.5 || currentElevation > threshold * 0.5)
 					terrain[row][col] = new HighArea();
 				else
@@ -42,10 +40,11 @@ public class MapCreatorFromDat implements IMapCreator {
 				terrain[row][col].setElevation(currentElevation);
 				terrain[row][col].setRadiation(currentRadiation);
 				
-		
+				startingByte = (ExpressionFactory.getExpression(op, val1, val2).getValue()) * totalBytes;
 			}
 		}
-		input.close();
+		scanner.setTerrain(terrain);
+		randomFile.close();
 	}
 
 	@Override
