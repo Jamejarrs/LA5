@@ -31,6 +31,8 @@ public class MapCreatorFromDat implements IMapCreator {
 				Literal value1 = new Literal(val1);
 				Literal value2 = new Literal(val2);
 				
+				BinaryExpression exp = new BinaryExpression(value1, value2, );
+				
 				if (currentRadiation >= 0.5 || currentElevation > threshold * 0.5)
 					terrain[row][col] = new HighArea();
 				else
