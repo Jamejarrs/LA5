@@ -7,7 +7,10 @@ public class Literal implements IExpression {
 	public Literal(int value){
 		this.value = value;
 	}
-	
+	/**
+	 * Returns the value for the expression
+	 * @return value - the value for the expression
+	 */
 	@Override
 	public int getValue() {
 		return value;
